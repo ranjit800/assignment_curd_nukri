@@ -96,34 +96,68 @@ export const UserList = () => {
   }
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
+    <Container maxWidth="lg" sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
       {/* Header */}
       <Box
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        mb={4}
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', sm: 'row' },
+          justifyContent: 'space-between',
+          alignItems: { xs: 'flex-start', sm: 'center' },
+          mb: { xs: 3, md: 4 },
+          gap: 2,
+        }}
       >
-        <div>
-          <Typography variant="h4" component="h1" gutterBottom>
+        <Box>
+          <Typography 
+            variant="h4" 
+            component="h1" 
+            gutterBottom
+            sx={{ 
+              fontSize: { xs: '1.75rem', sm: '2rem', md: '2.125rem' },
+              fontWeight: 600,
+            }}
+          >
             User Management
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography 
+            variant="body1" 
+            color="text.secondary"
+            sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}
+          >
             Manage your users with full CRUD operations
           </Typography>
-        </div>
-        <Box display="flex" gap={2}>
+        </Box>
+        <Box 
+          sx={{ 
+            display: 'flex', 
+            gap: { xs: 1, sm: 2 },
+            width: { xs: '100%', sm: 'auto' },
+          }}
+        >
           <Button
             variant="outlined"
             startIcon={<RefreshIcon />}
             onClick={() => refetch()}
+            sx={{ 
+              flex: { xs: 1, sm: 'none' },
+              minWidth: { xs: 'auto', sm: '100px' },
+            }}
           >
-            Refresh
+            <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>
+              Refresh
+            </Box>
+            <Box component="span" sx={{ display: { xs: 'inline', sm: 'none' } }}>
+              Reload
+            </Box>
           </Button>
           <Button
             variant="contained"
             startIcon={<AddIcon />}
             onClick={handleAddNew}
+            sx={{ 
+              flex: { xs: 1, sm: 'none' },
+            }}
           >
             Add User
           </Button>

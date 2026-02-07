@@ -32,7 +32,7 @@ export const userFormFields: FieldConfig[] = [
         type: 'text',
         placeholder: 'Enter first name',
         required: true,
-        gridWidth: 6,
+        gridWidth: 6, // Takes half width (6 out of 12 columns)
     },
     {
         name: 'lastName',
@@ -46,7 +46,7 @@ export const userFormFields: FieldConfig[] = [
         name: 'email',
         label: 'Email Address',
         type: 'email',
-        placeholder: 'example@email.com',
+        placeholder: 'user@example.com',
         required: true,
         gridWidth: 6,
     },
@@ -59,8 +59,16 @@ export const userFormFields: FieldConfig[] = [
         gridWidth: 6,
     },
 
-    // EXAMPLE: How to add new fields
-    // Uncomment below to add Date of Birth field:
+    // ============================================
+    // HOW TO ADD NEW FIELDS - STEP 2 of 3
+    // ============================================
+    // Add field configurations here. The form will
+    // automatically render them based on this config.
+    // 
+    // EXAMPLES: Uncomment any of these to add fields
+    // ============================================
+
+    // Date field example
     // {
     //   name: 'dateOfBirth',
     //   label: 'Date of Birth',
@@ -69,19 +77,65 @@ export const userFormFields: FieldConfig[] = [
     //   gridWidth: 6,
     // },
 
+    // Text field example
     // {
     //   name: 'address',
     //   label: 'Address',
+    //   type: 'text',
+    //   placeholder: 'Enter your address',
+    //   required: false,
+    //   gridWidth: 12, // Full width
+    // },
+
+    // City and Zip side by side
+    // {
+    //   name: 'city',
+    //   label: 'City',
+    //   type: 'text',
+    //   placeholder: 'Enter city',
+    //   required: false,
+    //   gridWidth: 6,
+    // },
+    // {
+    //   name: 'zipCode',
+    //   label: 'ZIP Code',
+    //   type: 'text',
+    //   placeholder: '123456',
+    //   required: false,
+    //   gridWidth: 6,
+    // },
+
+    // Number field example
+    // {
+    //   name: 'age',
+    //   label: 'Age',
+    //   type: 'number',
+    //   placeholder: 'Enter age',
+    //   required: false,
+    //   gridWidth: 6,
+    // },
+
+    // Textarea example
+    // {
+    //   name: 'bio',
+    //   label: 'Biography',
     //   type: 'textarea',
-    //   placeholder: 'Enter full address',
+    //   placeholder: 'Tell us about yourself',
     //   required: false,
     //   gridWidth: 12,
     // },
 ];
 
 /**
- * Zod validation schema
- * This is generated dynamically based on userFormFields
+ * Zod Validation Schema
+ * 
+ * Defines validation rules for each field.
+ * These rules are enforced on the client side before form submission.
+ * 
+ * ============================================
+ * HOW TO ADD NEW FIELDS - STEP 3 of 3
+ * ============================================
+ * Add validation rules for your new fields here.
  */
 export const userValidationSchema = z.object({
     firstName: z
@@ -106,9 +160,41 @@ export const userValidationSchema = z.object({
         .regex(/^[0-9]{10}$/, 'Phone number must be exactly 10 digits')
         .min(1, 'Phone number is required'),
 
-    // Future field validations can be added here:
+    // ===== VALIDATION EXAMPLES: Uncomment to add =====
+
+    // Optional string field
     // dateOfBirth: z.string().optional(),
-    // address: z.string().min(10, 'Address must be at least 10 characters').optional(),
+
+    // Optional string with minimum length
+    // address: z.string().min(5, 'Address must be at least 5 characters').optional(),
+
+    // City validation (letters only)
+    // city: z.string().regex(/^[A-Za-z\s]+$/, 'City can only contain letters').optional(),
+
+    // ZIP code validation (6 digits)
+    // zipCode: z.string().regex(/^\d{6}$/, 'ZIP code must be 6 digits').optional(),
+
+    // Number validation with range
+    // age: z.number().min(18, 'Must be at least 18').max(100, 'Must be under 100').optional(),
+
+    // String length validation
+    // bio: z.string().max(500, 'Bio must be less than 500 characters').optional(),
+
+    // URL validation
+    // website: z.string().url('Must be a valid URL').optional(),
+
+    // Enum validation (dropdown values)
+    // role: z.enum(['admin', 'user', 'guest'], {
+    //   errorMap: () => ({ message: 'Role must be admin, user, or guest' })
+    // }).optional(),
+
+    // Email with custom pattern
+    // workEmail: z.string().email('Must be a valid email').optional(),
+
+    // Complex phone validation
+    // alternatePhone: z.string()
+    //   .regex(/^(\+\d{1,3}[- ]?)?\d{10}$/, 'Invalid phone format')
+    //   .optional(),
 });
 
 export type UserFormData = z.infer<typeof userValidationSchema>;
