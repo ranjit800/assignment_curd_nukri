@@ -1,0 +1,100 @@
+
+naukri.com
+Get app	
+Hello Ranjit jana
+
+
+Thank you very much for your interest in our opportunity.
+
+We are getting overwhelming response to our advertisement and in order to simplify the shortlisting process - we are starting with a Test task.
+
+
+Test Task:
+
+
+Build a simple React-based CRUD (Create, Read, Update, Delete) web application that interfaces with an API to manage user data. The application must be designed with future extensibility in mind it should allow new fields to be added with minimal code changes.
+
+Features Required
+
+1. User Form Fields
+
+Create a user interface with the following fields:
+
+First Name
+Last Name
+Phone Number
+Email Address
+Each field should support:
+
+Input validation
+Required field enforcement
+2. CRUD Operations
+
+Implement the following operations using our provided API:
+
+Create a new user
+Read (list and display all users)
+Update existing user information
+Delete a user
+API details (will be shared upon assignment or stub with JSON-server for mock testing if no API is provided).
+
+3. Extensibility
+
+The application should be structured in a way that:
+
+Adding a new field (e.g., "Date of Birth", "Address") should not require major UI or backend logic rewrites.
+Use configuration-driven UI rendering or schema-based form building if appropriate.
+4. UI Design
+
+Clean and user-friendly layout
+Use any component library (e.g., Material-UI, Bootstrap) or plain CSS
+Responsive design is a plus but not mandatory
+Deployment
+
+Deploy your application to a platform such as Netlify, Vercel, or GitHub Pages
+Submit a working deployment link along with source code
+
+Your Deliverables are as follows:
+
+
+Source code repository (GitHub)
+Deployed link to the live application
+A short README with:
+Setup instructions
+Brief explanation of how to add new fields to the form
+Any assumptions or design decisions
+4.If applicable, any mock API setup (e.g., JSON-server)
+
+Share your results by email to dsvreact@gmail.com.
+
+
+Our Evaluation Criteria for this test.
+
+
+1. React Coding Standards (Clean, modular, and well-structured code)
+
+2. Form Validation (Accurate input validation for all fields)
+
+3. API Integration (Proper async handling, error messages, and loading indicators)
+
+4. Extensibility (Ease of adding new fields (form architecture clarity and maintainability)
+
+5. UI/UX (Intuitive and neat user interface)
+
+6. Deployment (Working deployed app with clear instructions)
+
+7. Git Usage (Proper commit history, repo structure)
+
+8. Bonus: TypeScript usage (Adds clarity and safety to props and state)
+
+
+In case you have any questions/doubts - do send them to dsvreact@gmail.com
+
+
+Looking forward receiving your response
+
+
+Best Regards
+
+
+Mahesh
