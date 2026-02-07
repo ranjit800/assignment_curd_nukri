@@ -1,4 +1,5 @@
-import { CircularProgress, Box, Typography } from '@mui/material';
+import { CircularProgress, Box, Typography, Alert } from '@mui/material';
+import { Info as InfoIcon } from '@mui/icons-material';
 
 interface LoadingSpinnerProps {
   message?: string;
@@ -16,8 +17,9 @@ export const LoadingSpinner = ({ message = 'Loading...' }: LoadingSpinnerProps) 
         alignItems: 'center',
         justifyContent: 'center',
         minHeight: { xs: '300px', sm: '400px' },
-        gap: 2,
+        gap: 3,
         py: 4,
+        px: 2,
       }}
     >
       <CircularProgress 
@@ -42,6 +44,18 @@ export const LoadingSpinner = ({ message = 'Loading...' }: LoadingSpinnerProps) 
       >
         {message}
       </Typography>
+
+      {/* Cold Start Notice */}
+      <Alert 
+        severity="info" 
+        icon={<InfoIcon />}
+        sx={{ maxWidth: 600, mt: 1 }}
+      >
+        <Typography variant="body2">
+          <strong>First time loading?</strong> This app uses Render's free tier. 
+          The backend may take 30-60 seconds to wake up from sleep mode if it hasn't been used recently.
+        </Typography>
+      </Alert>
     </Box>
   );
 };
