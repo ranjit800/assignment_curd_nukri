@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Container, Typography, Button, Box, Alert } from '@mui/material';
-import { Add as AddIcon, Refresh as RefreshIcon } from '@mui/icons-material';
+import { Container, Typography, Button, Box, Alert, TextField, InputAdornment } from '@mui/material';
+import { Add as AddIcon, Refresh as RefreshIcon, Search as SearchIcon, Info as InfoIcon } from '@mui/icons-material';
 import { useUsers } from '../../hooks/useUsers';
 import { UserTable } from './UserTable';
 import { UserFormDialog } from './UserFormDialog';
@@ -31,6 +31,7 @@ export const UserList = () => {
   const [selectedUser, setSelectedUser] = useState<User | undefined>(undefined);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [userToDelete, setUserToDelete] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Handle create/edit form submit
   const handleFormSubmit = (data: UserFormData) => {
@@ -90,6 +91,17 @@ export const UserList = () => {
     setFormOpen(false);
     setSelectedUser(undefined);
   };
+
+  // Filter users based on search query
+  const filteredUsers = users.filter((user) => {
+    const query = searchQuery.toLowerCase();
+    return (
+      user.firstName?.toLowerCase().includes(query) ||
+      user.lastName?.toLowerCase().includes(query) ||
+      user.email?.toLowerCase().includes(query) ||
+      user.phone?.toLowerCase().includes(query)
+    );
+  });
 
   if (isLoading) {
     return <LoadingSpinner message="Loading users..." />;
@@ -171,9 +183,39 @@ export const UserList = () => {
         </Alert>
       )}
 
+      {/* Cold Start Notice */}
+      <Alert 
+        severity="info" 
+        icon={<InfoIcon />}
+        sx={{ mb: 3 }}
+      >
+        <Typography variant="body2">
+          <strong>Note:</strong> This app uses Render's free tier for the backend. 
+          If you haven't used it in a while, the first request may take 30-60 seconds 
+          as the server wakes up from sleep mode.
+        </Typography>
+      </Alert>
+
+      {/* Search Bar */}
+      <TextField
+        fullWidth
+        variant="outlined"
+        placeholder="Search by name, email, or phone..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        sx={{ mb: 3 }}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon color="action" />
+            </InputAdornment>
+          ),
+        }}
+      />
+
       {/* Users Table */}
       <UserTable
-        users={users}
+        users={filteredUsers}
         onEdit={handleEdit}
         onDelete={handleDeleteClick}
         isDeleting={isDeleting}
