@@ -1,139 +1,125 @@
-# User Management Frontend
+# Frontend App
 
-Modern React + TypeScript CRUD application for managing users.
+React + TypeScript user management interface.
 
-## 🚀 Quick Start
+## Quick Start
 
-### Install Dependencies
+Install dependencies:
 ```bash
 npm install
 ```
 
-### Set Environment Variable
-Create `.env` file:
+Create a `.env` file:
 ```
 VITE_API_URL=http://localhost:3001
 ```
 
-### Run Development Server
+Start dev server:
 ```bash
 npm run dev
 ```
 
-App will run on `http://localhost:5173`
+Open `http://localhost:5173` in your browser.
 
 ---
 
-## 🛠️ Tech Stack
+## What's Inside
 
-- **React 19** - UI library
-- **TypeScript** - Type safety
-- **Material-UI** - Component library  
-- **React Hook Form** - Form management
-- **Zod** - Schema validation
+- **React 19** - UI framework
+- **TypeScript** - Type checking
+- **Material-UI** - Components and design
+- **React Hook Form** - Form handling
+- **Zod** - Form validation
 - **React Query** - Data fetching
-- **Axios** - HTTP client
+- **Axios** - API calls
 - **Vite** - Build tool
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
 ├── components/
-│   ├── common/          # Reusable components
-│   └── users/           # User-specific components
+│   ├── common/          # Shared components
+│   └── users/           # User-specific stuff
 ├── config/
-│   └── formSchema.ts    # Form configuration (extensibility!)
+│   └── formSchema.ts    # Form config (this is where extensibility happens!)
 ├── hooks/
-│   └── useUsers.ts      # React Query hooks
+│   └── useUsers.ts      # Data fetching hooks
 ├── services/
-│   └── api.ts           # API layer
-├── styles/
-│   └── theme.ts         # MUI theme
+│   └── api.ts           # API calls
 └── types/
     └── user.types.ts    # TypeScript types
 ```
 
 ---
 
-## 🎯 Features
+## Features
 
-- ✅ **CRUD Operations** - Create, Read, Update, Delete users
-- ✅ **Form Validation** - Zod schema validation  
-- ✅ **Responsive Design** - Mobile and desktop views
-- ✅ **Configuration-Driven** - Easy to extend with new fields
-- ✅ **Type-Safe** - Full TypeScript support
-- ✅ **Professional UI** - Material-UI components
+- Create, read, update, delete users
+- Form validation
+- Mobile responsive
+- Easy to add new fields (see ADDING_NEW_FIELDS.md)
+- Full TypeScript support
 
 ---
 
-## 🔧 Environment Variables
+## Environment Variables
 
-| Variable | Description | Example |
-|----------|-------------|---------|
+You only need one:
+
+| Variable | What it does | Example |
+|----------|--------------|---------|
 | `VITE_API_URL` | Backend API URL | `http://localhost:3001` |
 
 ---
 
-## 🌐 Deploy to Vercel
+## Deploying to Vercel
 
-### One-Click Deploy
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
-
-### Manual Deploy
-1. Push code to GitHub
-2. Import repository in Vercel
+1. Push to GitHub
+2. Go to Vercel and import your repo
 3. Add environment variable:
-   - Name: `VITE_API_URL`
-   - Value: Your backend URL (e.g., `https://your-api.onrender.com`)
-4. Deploy!
+   - **Name:** `VITE_API_URL`
+   - **Value:** Your Render backend URL
+4. Deploy
+
+Vercel auto-detects Vite projects, so no extra config needed.
 
 ---
 
-## 📝 Adding New Fields
+## Adding New Fields
 
-See [ADDING_NEW_FIELDS.md](../ADDING_NEW_FIELDS.md) for detailed instructions.
+Check out `ADDING_NEW_FIELDS.md` in the root folder for step-by-step instructions.
 
-**Quick summary:**
+Quick version:
 1. Add field to `src/types/user.types.ts`
-2. Add field config to `src/config/formSchema.ts`
+2. Add config to `src/config/formSchema.ts`
 3. Add validation to `src/config/formSchema.ts`
-4. Done! Form auto-renders new field
+4. Done - form renders automatically!
 
 ---
 
-## 🧪 Available Scripts
+## Available Commands
 
 ```bash
-npm run dev      # Start development server
+npm run dev      # Start dev server
 npm run build    # Build for production
 npm run preview  # Preview production build
-npm run lint     # Run ESLint
+npm run lint     # Run linter
 ```
 
 ---
 
-## 🎨 Customization
+## Customization
 
-### Theme
-Edit `src/styles/theme.ts` to customize colors and styles.
+**Theme:** Edit `src/styles/theme.ts` for colors and styles
 
-### Validation
-Edit `src/config/formSchema.ts` to modify validation rules.
+**Validation:** Modify rules in `src/config/formSchema.ts`
 
-### API
-Edit `src/services/api.ts` to change API endpoints or add authentication.
+**API:** Change endpoints in `src/services/api.ts`
 
 ---
 
-## 📄 License
-
-MIT
-
----
-
-## 👤 Author
-
-Ranjit Jana - jranjit367@gmail.com
+**Author:** Ranjit Jana  
+**Email:** jranjit367@gmail.com

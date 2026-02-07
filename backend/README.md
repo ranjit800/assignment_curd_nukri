@@ -1,100 +1,94 @@
-# User Management Backend API
+# Backend API
 
-JSON Server backend for the User Management CRUD application.
+Simple JSON Server backend for the user management app.
 
-## 🚀 Quick Start
+## Getting Started
 
-### Install Dependencies
+Install packages:
 ```bash
 npm install
 ```
 
-### Run Locally
+Run the server:
 ```bash
 npm start
 ```
 
-Server will run on `http://localhost:3001`
+Server starts on `http://localhost:3001`
 
 ---
 
-## 📌 API Endpoints
+## API Endpoints
 
-### Base URL
-- Local: `http://localhost:3001`
-- Production: `https://your-app.onrender.com`
+**Base URL:** `http://localhost:3001` (local) or `https://your-app.onrender.com` (production)
 
-### Available Endpoints
-
-#### Get All Users
+### Get all users
 ```
 GET /users
 ```
 
-#### Get Single User
+### Get one user
 ```
 GET /users/:id
 ```
 
-#### Create User
+### Create user
 ```
 POST /users
 Content-Type: application/json
 
 {
-  "firstName": "string",
-  "lastName": "string",
-  "email": "string",
-  "phone": "string"
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john@example.com",
+  "phone": "1234567890"
 }
 ```
 
-#### Update User
+### Update user
 ```
 PUT /users/:id
 Content-Type: application/json
 
 {
-  "firstName": "string",
-  "lastName": "string",
-  "email": "string",
-  "phone": "string"
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john@example.com",
+  "phone": "1234567890"
 }
 ```
 
-#### Delete User
+### Delete user
 ```
 DELETE /users/:id
 ```
 
 ---
 
-## 🗄️ Database
+## Database
 
-Data is stored in `db.json` file. Changes persist automatically.
-
----
-
-## 🌐 Deploy to Render
-
-1. Push code to GitHub
-2. Create new Web Service on Render
-3. Connect repository
-4. Configure:
-   - Build Command: `npm install`
-   - Start Command: `npm start`
-5. Deploy!
+Everything is stored in `db.json`. Changes save automatically.
 
 ---
 
-## 🔧 Environment Variables
+## Deploying to Render
 
-None required for basic setup.
+1. Push your code to GitHub
+2. Create a new Web Service on Render
+3. Connect your repo
+4. Set these configs:
+   - **Build Command:** `npm install`
+   - **Start Command:** `npm start`
+5. Click deploy
+
+That's it!
 
 ---
 
-## 📝 Notes
+## Notes
 
-- CORS is enabled for all origins
-- Free tier on Render sleeps after 15 minutes of inactivity
-- First request after sleep takes 30-60 seconds to wake up
+- CORS is enabled (frontend can make requests)
+- Render's free tier sleeps after 15 min of inactivity
+- First request after sleep takes ~30-60 seconds to wake up
+
+Not a big deal for demos and assignments though!
