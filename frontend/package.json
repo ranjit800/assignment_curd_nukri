@@ -7,6 +7,7 @@
     "dev": "vite",
     "api": "json-server --watch db.json --port 3001",
     "dev:all": "concurrently \"npm run dev\" \"npm run api\" --names \"CLIENT,API\" --prefix-colors \"cyan,yellow\"",
+    "start": "node server.js",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
