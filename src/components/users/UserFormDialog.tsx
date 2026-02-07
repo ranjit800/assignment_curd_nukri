@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -47,13 +48,27 @@ export const UserFormDialog = ({
     formState: { errors },
   } = useForm<UserFormData>({
     resolver: zodResolver(userValidationSchema),
-    defaultValues: user || {
+    defaultValues: {
       firstName: '',
       lastName: '',
       email: '',
       phone: '',
     },
   });
+
+  // Reset form with user data when editing
+  useEffect(() => {
+    if (user) {
+      reset(user);
+    } else {
+      reset({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+      });
+    }
+  }, [user, reset]);
 
   const handleClose = () => {
     reset();
