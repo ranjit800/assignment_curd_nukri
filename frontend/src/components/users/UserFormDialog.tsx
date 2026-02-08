@@ -84,14 +84,24 @@ export const UserFormDialog = ({
     <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
       <DialogTitle>{user ? 'Edit User' : 'Add New User'}</DialogTitle>
       <form onSubmit={handleSubmit(handleFormSubmit)}>
-        <DialogContent>
-          <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 2, mt: 1 }}>
+        <DialogContent sx={{ maxHeight: { xs: '60vh', sm: '70vh' }, overflowY: 'auto' }}>
+          <Box 
+            sx={{ 
+              display: 'grid', 
+              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' },
+              gap: 2, 
+              mt: 1 
+            }}
+          >
             {/* DYNAMIC FORM FIELD RENDERING */}
             {userFormFields.map((field) => (
               <Box
                 key={field.name}
                 sx={{
-                  gridColumn: field.gridWidth === 12 ? 'span 2' : 'span 1',
+                  gridColumn: { 
+                    xs: 'span 1',
+                    sm: field.gridWidth === 12 ? 'span 2' : 'span 1'
+                  },
                 }}
               >
                 <Controller
@@ -110,6 +120,9 @@ export const UserFormDialog = ({
                       error={!!errors[field.name as keyof UserFormData]}
                       helperText={errors[field.name as keyof UserFormData]?.message}
                       disabled={isLoading}
+                      InputLabelProps={{
+                        shrink: field.type === 'date' ? true : undefined,
+                      }}
                     />
                   )}
                 />
